@@ -1,6 +1,7 @@
 package com.example.dudco.genius_game;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 maintext.setText("" + check[cnt++]);
                 if (cnt == Integer.valueOf(num)) {
                     btn.setEnabled(false);
+                    btn.setImageResource(R.drawable.pick_button_bw);
                 }
             }
         });
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 num = data.getStringExtra("num");
                 cnt = 0;
+                btn.setImageResource(R.drawable.pick);
                 btn.setEnabled(true);
                 Log.d("dudco", num + "");
                 setRandom(Integer.valueOf(num));
