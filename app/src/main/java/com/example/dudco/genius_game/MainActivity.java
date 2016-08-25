@@ -1,6 +1,7 @@
 package com.example.dudco.genius_game;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         random = new Random();
         maintext = (TextView) findViewById(R.id.text);
+        maintext.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Daum_SemiBold.ttf"));
+        maintext.setText("");
         btn = (ImageView) findViewById(R.id.btn_pick);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -47,10 +50,10 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1234) {
             if (resultCode == RESULT_OK) {
                 num = data.getStringExtra("num");
+                cnt = 0;
+                btn.setEnabled(true);
                 Log.d("dudco", num + "");
                 setRandom(Integer.valueOf(num));
-
-                maintext.setText(num + "명" + "\nPick버튼을 눌러주세요.");
             }
         }
     }
